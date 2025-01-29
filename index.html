@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Sreerag PC | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-            --tile-gradient-1: linear-gradient(135deg, #f6e7ea 0%, #fff 100%);
-            --tile-gradient-2: linear-gradient(135deg, #e7f0ff 0%, #fff 100%);
+            --primary-gradient: linear-gradient(135deg, rgba(245, 247, 250, 0.97) 0%, rgba(228, 233, 242, 0.97) 100%);
+            --tile-gradient-1: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            --tile-gradient-2: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+            --tile-gradient-3: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            --tile-gradient-4: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
             --text-primary: #2d3748;
             --text-secondary: #4a5568;
         }
@@ -26,26 +28,61 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--primary-gradient);
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background: #f8fafc;
+        }
+
+        /* Background portrait styling */
+        .background-portrait {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: auto;
+            height: 100vh;
+            opacity: 0.15;
+            z-index: -1;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            z-index: -1;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
         }
 
         header {
             text-align: center;
             padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .name {
+            font-family: 'Poppins', sans-serif;
             font-size: 3.5rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
+            background: linear-gradient(to right, #2d3748, #4a5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .title {
@@ -54,54 +91,104 @@
             font-weight: 300;
         }
 
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            border-radius: 2px;
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
 
         .skill-tile {
-            background: var(--tile-gradient-1);
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
-        .skill-tile:nth-child(even) {
+        .skill-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--tile-gradient-1);
+            border-radius: 6px 6px 0 0;
+        }
+
+        .skill-tile:nth-child(2n)::before {
             background: var(--tile-gradient-2);
+        }
+
+        .skill-tile:nth-child(3n)::before {
+            background: var(--tile-gradient-3);
+        }
+
+        .skill-tile:nth-child(4n)::before {
+            background: var(--tile-gradient-4);
         }
 
         .skill-tile:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
 
         .skill-name {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
         .skill-description {
             color: var(--text-secondary);
             font-size: 1rem;
+            line-height: 1.7;
         }
 
         .skill-links {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .skill-links a {
             color: #4a90e2;
             text-decoration: none;
-            margin-right: 1rem;
-            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
         }
 
         .skill-links a:hover {
-            text-decoration: underline;
+            transform: translateX(5px);
         }
 
         @media (max-width: 768px) {
@@ -117,19 +204,40 @@
                 font-size: 1.25rem;
             }
 
+            .section-title {
+                font-size: 1.75rem;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .background-portrait {
+                height: 100vh;
+                width: 100%;
+                object-fit: cover;
+                opacity: 0.1;
+            }
+
+            header {
+                padding: 3rem 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background portrait -->
+    <img src="portrait.svg" alt="Background Portrait" class="background-portrait">
+    <div class="background-overlay"></div>
+
     <div class="container">
         <header>
             <h1 class="name">Sreerag PC</h1>
             <h2 class="title">SDE 2</h2>
         </header>
 
+        <h2 class="section-title">My Skills</h2>
+        
         <main>
             <div class="skills-grid" id="skills-container">
                 <!-- Skills will be populated here by JavaScript -->
@@ -138,7 +246,6 @@
     </div>
 
     <script>
-        // This will fetch and parse the skills data from a CSV file
         async function loadSkills() {
             try {
                 const response = await fetch('skills.csv');
@@ -147,22 +254,26 @@
                 displaySkills(skills);
             } catch (error) {
                 console.error('Error loading skills:', error);
-                // Fallback data in case CSV loading fails
                 const fallbackSkills = [
                     {
                         name: 'Frontend Development',
-                        description: 'Expertise in building responsive web applications using modern JavaScript frameworks and vanilla JS.',
+                        description: 'Expert in creating responsive web applications with modern JavaScript frameworks and vanilla JS. Specialized in user-centric design and performance optimization.',
                         links: 'https://github.com/yourusername/frontend-project'
                     },
                     {
                         name: 'Backend Development',
-                        description: 'Experience with server-side programming, API development, and database management.',
+                        description: 'Proficient in building scalable server-side applications, RESTful APIs, and microservices architecture with focus on security and efficiency.',
                         links: 'https://github.com/yourusername/backend-project'
                     },
                     {
-                        name: 'Cloud Services',
-                        description: 'Proficient in AWS services, serverless architecture, and cloud infrastructure.',
+                        name: 'Cloud Architecture',
+                        description: 'Experienced in AWS cloud services, containerization, and serverless architectures. Skilled in optimizing cloud infrastructure for cost and performance.',
                         links: 'https://github.com/yourusername/cloud-project'
+                    },
+                    {
+                        name: 'System Design',
+                        description: 'Proven track record in designing scalable distributed systems with emphasis on reliability, performance, and maintainability.',
+                        links: 'https://github.com/yourusername/system-design-project'
                     }
                 ];
                 displaySkills(fallbackSkills);
@@ -200,7 +311,6 @@
             `).join('');
         }
 
-        // Load skills when the page loads
         window.addEventListener('load', loadSkills);
     </script>
 </body>
