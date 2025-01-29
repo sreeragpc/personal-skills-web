@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            --primary-gradient: linear-gradient(135deg, rgba(245, 247, 250, 0.97) 0%, rgba(228, 233, 242, 0.97) 100%);
             --tile-gradient-1: linear-gradient(135deg, #f6e7ea 0%, #fff 100%);
             --tile-gradient-2: linear-gradient(135deg, #e7f0ff 0%, #fff 100%);
             --text-primary: #2d3748;
@@ -26,19 +26,49 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--primary-gradient);
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background portrait styling */
+        .background-portrait {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: auto;
+            height: 100vh;
+            opacity: 0.15;
+            z-index: -1;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        /* Overlay gradient */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            z-index: -1;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
         }
 
         header {
             text-align: center;
             padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            margin-bottom: 2rem;
         }
 
         .name {
@@ -58,7 +88,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
 
         .skill-tile {
@@ -67,6 +97,8 @@
             border-radius: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .skill-tile:nth-child(even) {
@@ -120,10 +152,21 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .background-portrait {
+                height: 100vh;
+                width: 100%;
+                object-fit: cover;
+                opacity: 0.1;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Background portrait -->
+    <img src="portrait.svg" alt="Background Portrait" class="background-portrait">
+    <div class="background-overlay"></div>
+
     <div class="container">
         <header>
             <h1 class="name">Sreerag PC</h1>
