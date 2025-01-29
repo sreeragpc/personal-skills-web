@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sreerag PC | Portfolio</title>
+    <title>Your Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, rgba(245, 247, 250, 0.97) 0%, rgba(228, 233, 242, 0.97) 100%);
-            --tile-gradient-1: linear-gradient(135deg, rgba(246, 231, 234, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
-            --tile-gradient-2: linear-gradient(135deg, rgba(231, 240, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
-            --accent-color: #4a90e2;
+            --primary-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            --tile-gradient-1: linear-gradient(135deg, #f6e7ea 0%, #fff 100%);
+            --tile-gradient-2: linear-gradient(135deg, #e7f0ff 0%, #fff 100%);
             --text-primary: #2d3748;
             --text-secondary: #4a5568;
         }
@@ -27,112 +26,47 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            background-color: #f8fafc;
-        }
-
-        .background-portrait {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: auto;
-            height: 100vh;
-            opacity: 0.12;
-            z-index: -1;
-            object-fit: cover;
-            pointer-events: none;
-        }
-
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             background: var(--primary-gradient);
-            z-index: -1;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            position: relative;
         }
 
         header {
             text-align: center;
-            padding: 5rem 0;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), #6366f1);
+            padding: 4rem 0;
         }
 
         .name {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 0.8s ease-out;
         }
 
         .title {
             font-size: 1.5rem;
             color: var(--text-secondary);
             font-weight: 300;
-            animation: slideUp 0.8s ease-out;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
-            animation: fadeIn 1s ease-out;
+            margin-top: 4rem;
         }
 
         .skill-tile {
             background: var(--tile-gradient-1);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
+            padding: 2rem;
+            border-radius: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tile::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-color), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .skill-tile:nth-child(even) {
@@ -140,71 +74,34 @@
         }
 
         .skill-tile:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-tile:hover::before {
-            opacity: 1;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         .skill-name {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-primary);
         }
 
         .skill-description {
             color: var(--text-secondary);
             font-size: 1rem;
-            line-height: 1.7;
         }
 
         .skill-links {
-            margin-top: 1.5rem;
-            display: flex;
-            align-items: center;
+            margin-top: 1rem;
         }
 
         .skill-links a {
-            color: var(--accent-color);
+            color: #4a90e2;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            transition: all 0.2s ease;
+            margin-right: 1rem;
+            font-size: 0.9rem;
         }
 
         .skill-links a:hover {
-            transform: translateX(5px);
-        }
-
-        .skill-links a::after {
-            content: '→';
-            margin-left: 0.5rem;
-            transition: transform 0.2s ease;
-        }
-
-        .skill-links a:hover::after {
-            transform: translateX(3px);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -213,7 +110,7 @@
             }
 
             .name {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .title {
@@ -223,24 +120,10 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
-
-            .background-portrait {
-                height: 100vh;
-                width: 100%;
-                object-fit: cover;
-                opacity: 0.08;
-            }
-
-            header {
-                padding: 3rem 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <img src="portrait.svg" alt="Background Portrait" class="background-portrait">
-    <div class="background-overlay"></div>
-
     <div class="container">
         <header>
             <h1 class="name">Sreerag PC</h1>
@@ -248,11 +131,14 @@
         </header>
 
         <main>
-            <div class="skills-grid" id="skills-container"></div>
+            <div class="skills-grid" id="skills-container">
+                <!-- Skills will be populated here by JavaScript -->
+            </div>
         </main>
     </div>
 
     <script>
+        // This will fetch and parse the skills data from a CSV file
         async function loadSkills() {
             try {
                 const response = await fetch('skills.csv');
@@ -261,26 +147,22 @@
                 displaySkills(skills);
             } catch (error) {
                 console.error('Error loading skills:', error);
+                // Fallback data in case CSV loading fails
                 const fallbackSkills = [
                     {
                         name: 'Frontend Development',
-                        description: 'Building exceptional user experiences with modern JavaScript frameworks, responsive design, and performance optimization techniques.',
+                        description: 'Expertise in building responsive web applications using modern JavaScript frameworks and vanilla JS.',
                         links: 'https://github.com/yourusername/frontend-project'
                     },
                     {
                         name: 'Backend Development',
-                        description: 'Architecting robust server-side solutions with scalable APIs, microservices, and efficient database management systems.',
+                        description: 'Experience with server-side programming, API development, and database management.',
                         links: 'https://github.com/yourusername/backend-project'
                     },
                     {
-                        name: 'Cloud Architecture',
-                        description: 'Designing and implementing cloud-native solutions using AWS services, containerization, and serverless architectures.',
+                        name: 'Cloud Services',
+                        description: 'Proficient in AWS services, serverless architecture, and cloud infrastructure.',
                         links: 'https://github.com/yourusername/cloud-project'
-                    },
-                    {
-                        name: 'System Design',
-                        description: 'Creating scalable, reliable, and efficient distributed systems with focus on performance and maintainability.',
-                        links: 'https://github.com/yourusername/system-design-project'
                     }
                 ];
                 displaySkills(fallbackSkills);
@@ -312,12 +194,13 @@
                     <h3 class="skill-name">${skill.name}</h3>
                     <p class="skill-description">${skill.description}</p>
                     <div class="skill-links">
-                        <a href="${skill.links}" target="_blank">View Projects</a>
+                        <a href="${skill.links}" target="_blank">View Projects →</a>
                     </div>
                 </div>
             `).join('');
         }
 
+        // Load skills when the page loads
         window.addEventListener('load', loadSkills);
     </script>
 </body>
